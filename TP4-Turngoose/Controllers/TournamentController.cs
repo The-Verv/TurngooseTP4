@@ -18,20 +18,11 @@ namespace TP4_Turngoose.Controllers
         }
 
        [HttpPost]
-        public ActionResult Index(String name, String sponsor, String team, int seed)
-        {
-            if (sponsor == null)
-                sponsor = "";
-            if (team == null)
-                team = "";
-            if (seed == null)
-                seed = 0;
-
-
-            tournoi.AddParticipant(name, sponsor, team, 0, seed);
-            return null;
-        }
-
+        public void AddParticipant(String name, String sponsor, String team, String seed)
+       {
+            tournoi.AddParticipant(name, sponsor, team, 0, Convert.ToInt32(seed));
+       }
+         
         public ActionResult Brackets()
         {
             return View();

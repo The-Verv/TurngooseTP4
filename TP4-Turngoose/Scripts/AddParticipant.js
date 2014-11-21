@@ -6,17 +6,13 @@ var addParticipant = function () {
     var participantSeed = $('#txtPartSeed').val().trim();
     
     if (participantName != '') {
-        console.log(participantName);
-        //$('#participants').val($('#participants').val() + participantName);
-        $.ajax({
-           
-            url: '../Tournament/Index',
+        $.ajax({  
+            url: '../Tournament/AddParticipant',
             type: 'POST',
             data: { name: participantName, sponsor: participantSponsor, team: participantTeam, seed: participantSeed },
-            success: function (participantName) {
+            success: function (data) {
                 $('#participants').val($('#participants').val() + participantName);
                 alert("ajax");
-               
             },
             error: function (xhr, ajaxOptions, thrownError) {
                 alert("errorfgt");
