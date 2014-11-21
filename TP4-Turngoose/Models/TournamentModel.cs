@@ -5,19 +5,19 @@ using System.Web;
 
 namespace TP4_Turngoose.Models
 {
-    public class Tournament
+    public class TournamentModel
     {
         public string TournamentName { get; set; }
         public DateTime TournamentDate { get; set; }
         public Boolean DoubleElimination { get; set; }
         public string Administrator { get; set; }
-        public List<Participant> WinnerParticipants { get; set; }
-        public List<Participant> LoserParticipants { get; set; }
+        public List<ParticipantModel> WinnerParticipants { get; set; }
+        public List<ParticipantModel> LoserParticipants { get; set; }
 
-        public Tournament() : this("", new DateTime(), false, "", new List<Participant>(), new List<Participant>()) { }
+        public TournamentModel() : this("", new DateTime(), false, "", new List<ParticipantModel>(), new List<ParticipantModel>()) { }
 
-        public Tournament(string tournamentName, DateTime tournamentDate, Boolean doubleElimination, string administrator,
-            List<Participant> winnerParticipants, List<Participant> loserParticipants)
+        public TournamentModel(string tournamentName, DateTime tournamentDate, Boolean doubleElimination, string administrator,
+            List<ParticipantModel> winnerParticipants, List<ParticipantModel> loserParticipants)
         {
             TournamentName = tournamentName;
             TournamentDate = tournamentDate;
@@ -29,7 +29,7 @@ namespace TP4_Turngoose.Models
 
         public void AddParticipant(string name = "", string sponsor = "", string team = "", int score = 0, int seed = 0)
         {
-            WinnerParticipants.Add(new Participant(WinnerParticipants.Count, name, sponsor, team, score, seed));
+            WinnerParticipants.Add(new ParticipantModel(WinnerParticipants.Count, name, sponsor, team, score, seed));
         }
 
         public void AddParticipantLoserBracket(int id)
@@ -40,7 +40,7 @@ namespace TP4_Turngoose.Models
         public void RandomizeSeed()
         {
             Random rand = new Random();
-            foreach (Participant p in WinnerParticipants)
+            foreach (ParticipantModel p in WinnerParticipants)
             {
                 p.Seed = rand.Next();
             }
@@ -57,13 +57,13 @@ namespace TP4_Turngoose.Models
             WinnerParticipants = SortSeeds(WinnerParticipants);
         }
 
-        private List<Participant> SortSeeds(List<Participant> participants)
+        private List<ParticipantModel> SortSeeds(List<ParticipantModel> participants)
         {
             if(participants.Count > 3) 
             {
-                List<Participant> list1 = new List<Participant>();
-                List<Participant> list2 = new List<Participant>();
-                foreach (Participant p in participants)
+                List<ParticipantModel> list1 = new List<ParticipantModel>();
+                List<ParticipantModel> list2 = new List<ParticipantModel>();
+                foreach (ParticipantModel p in participants)
                 {
                     if (list1.Count <= list2.Count)
                         list1.Add(p);
@@ -79,30 +79,5 @@ namespace TP4_Turngoose.Models
         }
     }
 
-    public class Participant
-    {
-        public int ID { get; set; }
-        public string Name { get; set; }
-        public string Sponsor { get; set; }
-        public string Team { get; set; }
-        public int Score { get; set; }
-        public int Seed { get; set; }
-
-        public Participant() { }
-
-        public Participant(int id, string name = "", string sponsor = "", string team = "", int score = 0, int seed = 0)
-        {
-            ID = id;
-            Name = name;
-            Sponsor = sponsor;
-            Team = team;
-            Score = score;
-            seed = 0;
-        }
-
-        public void AddVictory(int nbWins = 1)
-        {
-            Score += nbWins;
-        }
-    }
+    
 }
