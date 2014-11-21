@@ -20,14 +20,16 @@
         </select>
         <form method="post" action="~/Controllers/TournamentController/AddParticipant">
             <div id="participantsDiv">
-                <p>Participants</p>
-                <textarea id="participants" style="width:220px; height:200px" rows="20" name="" cols="40"></textarea>
+                <h3>Participants</h3>
+
+            </div>
+                <!--<textarea id="participants" style="width:220px; height:200px" rows="20" name="" cols="40"></textarea>-->
                 <div>
-                    <p>New Participant</p>
+                    <h3>New Participant</h3>
                     Name:<input id="txtPartName" type="text" /> Sponsors:<input id="txtPartSponsors" type="text" /> Team:<input id="txtPartTeam" type="text" /> Seed:<input id="txtPartSeed" type="text" />
                     <input id="btnAdd" type="button" value="Add Participant" onclick="addParticipant();" />
                     
-                </div>
+               
             </div>
         </form>
             <p>

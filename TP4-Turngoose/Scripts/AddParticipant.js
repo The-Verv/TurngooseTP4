@@ -11,11 +11,17 @@ var addParticipant = function () {
             type: 'POST',
             data: { name: participantName, sponsor: participantSponsor, team: participantTeam, seed: participantSeed },
             success: function (data) {
-                $('#participants').val($('#participants').val() + participantName);
-                alert("ajax");
+                if (participantSponsor == "")
+                    participantSponsor = "no sponsor"
+                if (participantTeam == "")
+                    participantTeam = "no team"
+                if (participantSeed == "")
+                    participantSeed = "0"
+
+                $('#participantsDiv').append('<p>' + participantName + ';' + participantSponsor + ';' + participantTeam + ';' + participantSeed + '</p>' );
+                //$('#participants').val($('#participants').val() + participantName);
             },
             error: function (xhr, ajaxOptions, thrownError) {
-                alert("errorfgt");
         }
 
         });
