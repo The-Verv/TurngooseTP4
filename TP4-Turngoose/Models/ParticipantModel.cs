@@ -5,6 +5,7 @@ using System.Web;
 
 namespace TP4_Turngoose.Models
 {
+    [Serializable]
     public class ParticipantModel
     {
         public int ID { get; set; }

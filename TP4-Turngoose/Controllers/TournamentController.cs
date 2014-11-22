@@ -20,11 +20,11 @@ namespace TP4_Turngoose.Controllers
        [HttpPost]
         public void AddParticipant(String name, String sponsor, String team, String seed)
        {
-           if (sponsor == "")
+           if (sponsor.Trim() == "")
                sponsor = "no sponsor";
-           if (sponsor == "")
-               sponsor = "no team";
-           if (seed == "")
+           if (team.Trim() == "")
+               team = "no team";
+           if (seed.Trim() == "")
                seed = "0";
 
             tournoi.AddParticipant(name, sponsor, team, 0, int.Parse(seed));
