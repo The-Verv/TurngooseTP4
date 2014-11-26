@@ -13,15 +13,15 @@ namespace TP4_Turngoose.Models
     {
         const string SAVE_PATH = "/SavedTournaments/";
         public string TournamentName { get; set; }
-        public DateTime TournamentDate { get; set; }
+        public String TournamentDate { get; set; }
         public Boolean DoubleElimination { get; set; }
         public string Administrator { get; set; }
         public List<ParticipantModel> WinnerParticipants { get; set; }
         public List<ParticipantModel> LoserParticipants { get; set; }
 
-        public TournamentModel() : this("", new DateTime(), false, "", new List<ParticipantModel>(), new List<ParticipantModel>()) { }
+        public TournamentModel() : this("", "", false, "", new List<ParticipantModel>(), new List<ParticipantModel>()) { }
 
-        public TournamentModel(string tournamentName, DateTime tournamentDate, Boolean doubleElimination, string administrator,
+        public TournamentModel(string tournamentName, String tournamentDate, Boolean doubleElimination, string administrator,
             List<ParticipantModel> winnerParticipants, List<ParticipantModel> loserParticipants)
         {
             TournamentName = tournamentName;

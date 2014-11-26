@@ -30,8 +30,23 @@ namespace TP4_Turngoose.Controllers
             tournoi.AddParticipant(name, sponsor, team, 0, int.Parse(seed));
        }
          
-        public ActionResult Brackets()
+        public ActionResult Brackets(String adminName, String tournamentName, String date, String type, String seed)
         {
+            tournoi.Administrator = adminName;
+            tournoi.TournamentName = tournamentName;
+            tournoi.TournamentDate = date;
+            if (type == "Single Elimination")
+            {
+                tournoi.DoubleElimination = false;
+            }
+            else{
+                tournoi.DoubleElimination = true;
+            }
+            if (seed == "true"){
+                tournoi.RandomizeSeed();
+            }
+
+            ViewData["tournoi"] = tournoi;
             return View();
         }
 

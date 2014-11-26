@@ -1,40 +1,32 @@
 ﻿
-@{
-    ViewBag.Title = "Index";
-}
-
-
 <h2>New Tournament Setup</h2>
 
     <div>
         <p>Administrator name:</p><input id="txtAdmin" type="text" />
         <p>Tournament Name:</p><input id="txtName" type="text" />
         <p>Date:</p><input id="txtDate" type="text" />
-        <div id="calendar">
-
-        </div>
-        <p>Tournament Type:</p><select id="Select1">
+        <p>Tournament Type:</p><select id="tournamentType">
             <option>Single Elimination</option>
             <option>Double Elimination</option>
-
         </select>
-        <form method="post" action="~/Controllers/TournamentController/AddParticipant">
+        <p>
+            Randomize seeds:
+            <input id="randSeed" type="checkbox" checked="checked" onclick="randSeed()" />
+        </p>
             <div id="participantsDiv">
                 <h3>Participants</h3>
-
             </div>
-                <!--<textarea id="participants" style="width:220px; height:200px" rows="20" name="" cols="40"></textarea>-->
                 <div>
                     <h3>New Participant</h3>
-                    Name:<input id="txtPartName" type="text" /> Sponsors:<input id="txtPartSponsors" type="text" /> Team:<input id="txtPartTeam" type="text" /> Seed:<input id="txtPartSeed" type="text" />
-                    <input id="btnAdd" type="button" value="Add Participant" onclick="addParticipant();" />
-                    
-               
+                    Name:<input id="txtPartName" type="text" /> 
+                    Sponsors:<input id="txtPartSponsors" type="text" /> 
+                    Team:<input id="txtPartTeam" type="text" /> 
+                    Seed:<input id="txtPartSeed" type="text" disabled="disabled" />
+                    <input id="btnAdd" type="button" value="Add Participant" onclick="addParticipant();" /> 
             </div>
-        </form>
-            <p>
-                @Html.ActionLink("Generate the Brackets", "Brackets", "Tournament")
-            </p>
+        <p>
+            <input id="btnAdd" type="button" value="Create Tournament" onclick="createTournament();" /> 
+        </p>
 </div>
 <script src="~/Scripts/jquery-2.1.1.min.js"></script>
-<script src="~/Scripts/AddParticipant.js"></script>
+<script src="~/Scripts/createTournament.js"></script>
