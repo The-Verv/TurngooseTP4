@@ -15,3 +15,52 @@ select,
 textarea {
     max-width: 280px;
 }
+
+/*Brackets*/
+
+div.bracket ul {
+    float:left;
+    clear:right;
+    padding:5px;
+    list-style-type: none;
+}
+div.bracket li {
+
+    float:left;
+    clear:left;
+    padding:3px;
+}
+div.bracket li.Player {
+    background-color:gray;
+}
+div.bracket li.Blank {
+    background-color:white;
+}
+div.bracket li.U {
+    border-top-width:1px;
+}
+div.bracket li.UL {
+    border-left-width:1px;
+    border-top-width:1px;
+}
+div.bracket li.UR {
+    border-right-width:1px;
+    border-top-width:1px;
+}
+div.bracket li.D {
+    border-bottom-width:1px;
+}
+div.bracket li.DL {
+    border-bottom-width:1px;
+    border-left-width:1px;
+}
+div.bracket li.DR {
+    border-bottom-width:1px;
+    border-right-width:1px;
+}
+div.bracket li.L {
+    border-left-width:1px;
+}
+div.bracket li.R {
+    border-right-width:1px;
+}
