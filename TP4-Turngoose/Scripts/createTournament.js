@@ -19,7 +19,7 @@ var createTournament = function () {
             type: 'POST',
             data: { adminName: adminName, tournamentName: tournamentName, date: date, type:type, seed: seed },
             success: function (data) {
-                alert("Worked")
+                //alert("Worked")
             },
             error: function (xhr, ajaxOptions, thrownError) {
                alert("Un ou des champs obligatoires sont manquants.")
