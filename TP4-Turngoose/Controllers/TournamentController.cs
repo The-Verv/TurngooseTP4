@@ -9,7 +9,7 @@ namespace TP4_Turngoose.Controllers
 {
     public class TournamentController : Controller
     {
-        TournamentModel tournoi = new TournamentModel();
+        static TournamentModel tournoi = new TournamentModel();
         // GET: Tournament
         public ActionResult Index()
         {
