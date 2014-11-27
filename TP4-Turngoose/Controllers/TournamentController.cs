@@ -30,7 +30,7 @@ namespace TP4_Turngoose.Controllers
             tournoi.AddParticipant(name, sponsor, team, 0, int.Parse(seed));
        }
          
-        public ActionResult Brackets(String adminName, String tournamentName, String date, String type, String seed)
+        public void Brackets(String adminName, String tournamentName, String date, String type, String seed)
         {
             tournoi.Administrator = adminName;
             tournoi.TournamentName = tournamentName;
@@ -47,7 +47,6 @@ namespace TP4_Turngoose.Controllers
             }
 
             ViewData["tournoi"] = tournoi;
-            return View();
         }
 
     }

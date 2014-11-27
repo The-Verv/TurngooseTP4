@@ -1,4 +1,10 @@
-﻿var randSeed = function () {
+﻿$(document).ready(function () {
+    
+        $("#bracket").hide();
+   
+});
+
+var randSeed = function () {
     if ($('#randSeed').prop('checked')) {
         $('#txtPartSeed').val(" ");
         $('#txtPartSeed').attr('disabled', true);
@@ -19,7 +25,9 @@ var createTournament = function () {
             type: 'POST',
             data: { adminName: adminName, tournamentName: tournamentName, date: date, type:type, seed: seed },
             success: function (data) {
-                //alert("Worked")
+                $("#participantsDiv").slideUp();
+                $("#bracket").slideDown();
+                
             },
             error: function (xhr, ajaxOptions, thrownError) {
                alert("Un ou des champs obligatoires sont manquants.")
@@ -50,7 +58,7 @@ var addParticipant = function () {
                 if (participantSeed == "")
                     participantSeed = "0"
 
-                $('#participantsDiv').append('<p>' + participantName + ';' + participantSponsor + ';' + participantTeam + ';' + participantSeed + '</p>' );
+                $('#participantList').append('<p>' + participantName + ';' + participantSponsor + ';' + participantTeam + ';' + participantSeed + '</p>');
             },
             error: function (xhr, ajaxOptions, thrownError) {
         }
