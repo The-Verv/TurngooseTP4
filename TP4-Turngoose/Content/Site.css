@@ -24,49 +24,49 @@ textarea {
     */
 /*Brackets*/
 
-#bracket ul {
+.bracket ul {
     float:left;
     clear:right;
     padding:5px;
     list-style-type: none;
 }
-#bracket li {
+.bracket li {
 
     float:left;
     clear:left;
     padding:3px;
 }
-#bracket li.Player {
+.bracket li.Player {
     background-color:gray;
 }
-#bracket li.Blank {
+.bracket li.Blank {
     background-color:white;
 }
-#bracket li.U {
+.bracket li.U {
     border-top-width:1px;
 }
-#bracket li.UL {
+.bracket li.UL {
     border-left-width:1px;
     border-top-width:1px;
 }
-#bracket li.UR {
+.bracket li.UR {
     border-right-width:1px;
     border-top-width:1px;
 }
-#bracket li.D {
+.bracket li.D {
     border-bottom-width:1px;
 }
-#bracket li.DL {
+.bracket li.DL {
     border-bottom-width:1px;
     border-left-width:1px;
 }
-#bracket li.DR {
+.bracket li.DR {
     border-bottom-width:1px;
     border-right-width:1px;
 }
-#bracket li.L {
+.bracket li.L {
     border-left-width:1px;
 }
-#bracket li.R {
+.bracket li.R {
     border-right-width:1px;
 }
