@@ -13,7 +13,7 @@ var createTournament = function () {
     var date = $('#txtDate').val().trim();
     var type = $('#tournamentType').val();
     var seed = $('#randSeed').prop('checked');
-    if (adminName != '' && tournamentName != '' && date != '' && type != '' && seed != '') {
+    if (adminName != '' && tournamentName != '' && date != '') {
         $.ajax({  
             url: '../Tournament/Brackets',
             type: 'POST',
