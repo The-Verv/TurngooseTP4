@@ -13,6 +13,9 @@ var randSeed = function () {
     }
 };
 
+
+
+
 var createTournament = function () {
     var adminName = $('#txtAdmin').val().trim();
     var tournamentName = $('#txtName').val().trim();
@@ -26,6 +29,9 @@ var createTournament = function () {
     var nameCount = 0;
     var rowMod4 = 0;
     var rowModBatl = 0;
+    var colMod3 = 0
+    var battleMatrix = [[4, 3], [4, 11], [4, 19], [4, 27]];
+
     alert("Nb. of players: " + players.length + " Rows:" + rows + " Cols:" + cols);
     if (adminName != '' && tournamentName != '' && date != '' && players.length != 0) {
         $.ajax({  
@@ -39,9 +45,10 @@ var createTournament = function () {
                     $("#bracketLosers").slideDown();
                 }
                 //boucle générant le tableau selon le nombre de joueurs
-                //À faire: créer un modulo pour col 4,7,10,13,16... selon le nombre de joueurs(colonnes ou i'l y a un match)
                 //          créer un modulo permettant de savoir à quelles rangées il y a un match selon le nombre de joueurs
                 for (i = 1; i <= cols; i++) {
+                    colMod3 = (i - 1) % 3; //est égal à 0 sur les colonnes 1,4,7,10,13...
+                    //alert("colmod: " + colMod3)
                     $('#bracketWinners').append('<ul id="col' + i + '">' + '</ul>');
                     strTemp = "#bracketWinners ul#col" + i;
                     for (j = 0; j < rows ; j++) {
@@ -54,6 +61,8 @@ var createTournament = function () {
                             else if (rowMod4 == 3 || rowMod4 == 0) {
                                 $(strTemp).append('<li class="blank">/</li>');
                             }
+                        } else if (colMod3 == 0) {
+                            //alert("col: " + i)
                         } else {
                             $(strTemp).append('<li>' + i + '-' + j + '</li>');
                         }
