@@ -23,6 +23,9 @@ var createTournament = function () {
     var rows = 2 * Math.pow(2, Math.ceil(Math.log(players.length) / Math.log(2)));
     var cols = 1 + (3 * Math.ceil((Math.log(players.length) / Math.log(2))));
     var strTemp;
+    var nameCount = 0;
+    var rowMod4 = 0;
+    var rowModBatl = 0;
     alert("Nb. of players: " + players.length + " Rows:" + rows + " Cols:" + cols);
     if (adminName != '' && tournamentName != '' && date != '' && players.length != 0) {
         $.ajax({  
@@ -35,16 +38,25 @@ var createTournament = function () {
                 if (type == "Double Elimination") {
                     $("#bracketLosers").slideDown();
                 }
-                
+                //boucle générant le tableau selon le nombre de joueurs
+                //À faire: créer un modulo pour col 4,7,10,13,16... selon le nombre de joueurs(colonnes ou i'l y a un match)
+                //          créer un modulo permettant de savoir à quelles rangées il y a un match selon le nombre de joueurs
                 for (i = 1; i <= cols; i++) {
                     $('#bracketWinners').append('<ul id="col' + i + '">' + '</ul>');
                     strTemp = "#bracketWinners ul#col" + i;
-                    //alert(strTemp)
-                    //$(strTemp).append('<li id="col' + i + '>' + i + '-' + i + '</li>');
-                    //$('#bracketWinners').append('<p>' + rows + '</p>');
-                    for (j = 1; j <= (rows); j++) {
-                        $(strTemp).append('<li>' + i + ' ' + j + '</li>');
-                        //$(strTemp).append('<li id="col' + j + '>' + i + '-' + j + '</li>');
+                    for (j = 0; j < rows ; j++) {
+                        if (i == 1) {
+                            rowMod4 = j % 4;
+                            if (rowMod4 <= 2 && rowMod4 > 0) {
+                                $(strTemp).append('<li class="player">' + players.get(nameCount).innerHTML + '</li>');
+                                nameCount++;
+                            }
+                            else if (rowMod4 == 3 || rowMod4 == 0) {
+                                $(strTemp).append('<li class="blank">/</li>');
+                            }
+                        } else {
+                            $(strTemp).append('<li>' + i + '-' + j + '</li>');
+                        }
                     }
                 }
 

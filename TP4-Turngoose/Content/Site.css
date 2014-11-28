@@ -36,10 +36,13 @@ textarea {
     clear:left;
     padding:3px;
 }
-.bracket li.Player {
-    background-color:gray;
+.bracket li.player {
+    background-color:lightblue;
+    border-width:1px;
+    border-style:solid;
+    border-color:black;
 }
-.bracket li.Blank {
+.bracket li.blank {
     background-color:white;
 }
 .bracket li.U {
