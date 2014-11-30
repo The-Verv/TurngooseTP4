@@ -32,7 +32,7 @@ var createTournament = function () {
     var colMod3 = 0
     var battleMatrix = [[4, 3], [4, 11], [4, 19], [4, 27]];
 
-    alert("Nb. of players: " + players.length + " Rows:" + rows + " Cols:" + cols);
+    //alert("Nb. of players: " + players.length + " Rows:" + rows + " Cols:" + cols);
     if (adminName != '' && tournamentName != '' && date != '' && players.length != 0) {
         $.ajax({  
             url: '../Tournament/Brackets',
@@ -41,6 +41,7 @@ var createTournament = function () {
             success: function (data) {
                 $("#participantsDiv").slideUp();
                 $("#bracketWinners").slideDown();
+                $("#undoDiv").slideDown();
                 if (type == "Double Elimination") {
                     $("#bracketLosers").slideDown();
                 }
@@ -49,22 +50,22 @@ var createTournament = function () {
                 for (i = 1; i <= cols; i++) {
                     colMod3 = (i - 1) % 3; //est égal à 0 sur les colonnes 1,4,7,10,13...
                     //alert("colmod: " + colMod3)
-                    $('#bracketWinners').append('<ul id="col' + i + '">' + '</ul>');
+                    //$('#bracketWinners').append('<ul id="col' + i + '">' + '</ul>');
                     strTemp = "#bracketWinners ul#col" + i;
                     for (j = 0; j < rows ; j++) {
                         if (i == 1) {
                             rowMod4 = j % 4;
                             if (rowMod4 <= 2 && rowMod4 > 0) {
-                                $(strTemp).append('<li class="player">' + players.get(nameCount).innerHTML + '</li>');
+                                //$(strTemp).append('<li class="player">' + players.get(nameCount).innerHTML + '</li>');
                                 nameCount++;
                             }
                             else if (rowMod4 == 3 || rowMod4 == 0) {
-                                $(strTemp).append('<li class="blank">/</li>');
+                                //$(strTemp).append('<li class="blank">/</li>');
                             }
                         } else if (colMod3 == 0) {
                             //alert("col: " + i)
                         } else {
-                            $(strTemp).append('<li>' + i + '-' + j + '</li>');
+                            //$(strTemp).append('<li>' + i + '-' + j + '</li>');
                         }
                     }
                 }
@@ -78,7 +79,34 @@ var createTournament = function () {
         });
     }
 };
+var createTournament8 = function () {
+    var adminName = $('#txtAdmin').val().trim();
+    var tournamentName = $('#txtName').val().trim();
+    var date = $('#txtDate').val().trim();
+    var type = $('#tournamentType').val();
+    var seed = $('#randSeed').prop('checked');
+    var players = $('#participantList p');
 
+    if (adminName != '' && tournamentName != '' && date != '' && players.length != 0) {
+        $.ajax({
+            url: '../Tournament/Brackets',
+            type: 'POST',
+            data: { adminName: adminName, tournamentName: tournamentName, date: date, type: type, seed: seed },
+            success: function (data) {
+                $("#participantsDiv").slideUp();
+                $("#bracketWinners8").slideDown();
+                $("#undoDiv").slideDown();
+                if (type == "Double Elimination") {
+                    $("#bracketLosers8").slideDown();
+                }
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                alert("Un ou des champs obligatoires sont manquants.")
+            }
+
+        });
+    }
+};
 
 
 var addParticipant = function () {
