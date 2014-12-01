@@ -13,17 +13,12 @@ var randSeed = function () {
     }
 };
 
+var loadTournament = function () {
 
+}
 
 
 var createTournament = function () {
-    $('#txtName').attr('disabled', true);
-    $('#txtAdmin').attr('disabled', true);
-    $('#txtrandSeed').attr('disabled', true);
-    $('#tournamentType').attr('disabled', true);
-    $('#txtDate').attr('disabled', true);
-    $('#txtParticipants').attr('hidden', true);
-
     var adminName = $('#txtAdmin').val().trim();
     var tournamentName = $('#txtName').val().trim();
     var date = $('#txtDate').val().trim();
@@ -38,9 +33,6 @@ var createTournament = function () {
     var rowModBatl = 0;
     var colMod3 = 0
     var battleMatrix = [[4, 3], [4, 11], [4, 19], [4, 27]];
-
-    $('#txtTitle').text(tournamentName + " is in progress.");
-
     //alert("Nb. of players: " + players.length + " Rows:" + rows + " Cols:" + cols);
     if (adminName != '' && tournamentName != '' && date != '' && players.length != 0) {
         $.ajax({  
@@ -48,6 +40,14 @@ var createTournament = function () {
             type: 'POST',
             data: { adminName: adminName, tournamentName: tournamentName, date: date, type:type, seed: seed },
             success: function (data) {
+                $('#txtTitle').text(tournamentName + " is in progress.");
+                $('#txtName').attr('disabled', true);
+                $('#txtAdmin').attr('disabled', true);
+                $('#txtrandSeed').attr('disabled', true);
+                $('#tournamentType').attr('disabled', true);
+                $('#txtDate').attr('disabled', true);
+                $('#txtParticipants').attr('hidden', true);
+
                 $("#participantsDiv").slideUp();
                 $("#bracketWinners").slideDown();
                 $("#undoDiv").slideDown();
@@ -89,13 +89,6 @@ var createTournament = function () {
     }
 };
 var createTournament8 = function () {
-    $('#txtName').attr('disabled', true);
-    $('#txtAdmin').attr('disabled', true);
-    $('#txtrandSeed').attr('disabled', true);
-    $('#tournamentType').attr('disabled', true);
-    $('#txtDate').attr('disabled', true);
-    $('#txtParticipants').attr('hidden', true);
-
     var adminName = $('#txtAdmin').val().trim();
     var tournamentName = $('#txtName').val().trim();
     var date = $('#txtDate').val().trim();
@@ -103,14 +96,20 @@ var createTournament8 = function () {
     var seed = $('#randSeed').prop('checked');
     var players = $('#participantList p');
 
-    $('#txtTitle').text(tournamentName + " is in progress.");
-
     if (adminName != '' && tournamentName != '' && date != '' && players.length != 0) {
         $.ajax({
             url: '../Tournament/Brackets',
             type: 'POST',
             data: { adminName: adminName, tournamentName: tournamentName, date: date, type: type, seed: seed },
             success: function (data) {
+                $('#txtTitle').text(tournamentName + " is in progress.");
+                $('#txtName').attr('disabled', true);
+                $('#txtAdmin').attr('disabled', true);
+                $('#txtrandSeed').attr('disabled', true);
+                $('#tournamentType').attr('disabled', true);
+                $('#txtDate').attr('disabled', true);
+                $('#txtParticipants').attr('hidden', true);
+
                 $("#participantsDiv").slideUp();
                 $("#bracketWinners8").slideDown();
                 $("#undoDiv").slideDown();
