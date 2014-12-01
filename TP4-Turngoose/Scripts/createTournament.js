@@ -108,6 +108,28 @@ var createTournament8 = function () {
     }
 };
 
+var addLoser = function (ddl, bracketID) {
+    if (ddl.selectedIndex != 0) {
+        var loser;
+        if (ddl.selectedIndex == 1)
+            loser = ddl.options[2].value;
+        else
+            loser = ddl.options[1].value;
+
+        ddl.options[0].value = document.getElementById(bracketID).innerHTML;
+        document.getElementById(bracketID).innerHTML = loser;
+        var list = document.getElementById(bracketID),
+        items = list.childNodes;
+
+        for (var i = 0, length = childNodes.length; i < length; i++) {
+            if (items[i].nodeType != 1) {
+                continue;
+            }
+            items[i].innerHTML = loser;
+        }
+    }
+    
+}
 
 var addParticipant = function () {
     var participantName = $('#txtPartName').val().trim();

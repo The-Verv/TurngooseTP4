@@ -38,7 +38,8 @@ textarea {
     clear:left;
     
 }
-.bracket li.player {
+
+.bracket li.player, select.player {
     width:200px;
     background-color:lightblue;
     border-width:1px;
