@@ -17,6 +17,13 @@ var randSeed = function () {
 
 
 var createTournament = function () {
+    $('#txtName').attr('disabled', true);
+    $('#txtAdmin').attr('disabled', true);
+    $('#txtrandSeed').attr('disabled', true);
+    $('#tournamentType').attr('disabled', true);
+    $('#txtDate').attr('disabled', true);
+    $('#txtParticipants').attr('hidden', true);
+
     var adminName = $('#txtAdmin').val().trim();
     var tournamentName = $('#txtName').val().trim();
     var date = $('#txtDate').val().trim();
@@ -31,6 +38,8 @@ var createTournament = function () {
     var rowModBatl = 0;
     var colMod3 = 0
     var battleMatrix = [[4, 3], [4, 11], [4, 19], [4, 27]];
+
+    $('#txtTitle').text(tournamentName + " is in progress.");
 
     //alert("Nb. of players: " + players.length + " Rows:" + rows + " Cols:" + cols);
     if (adminName != '' && tournamentName != '' && date != '' && players.length != 0) {
@@ -80,12 +89,21 @@ var createTournament = function () {
     }
 };
 var createTournament8 = function () {
+    $('#txtName').attr('disabled', true);
+    $('#txtAdmin').attr('disabled', true);
+    $('#txtrandSeed').attr('disabled', true);
+    $('#tournamentType').attr('disabled', true);
+    $('#txtDate').attr('disabled', true);
+    $('#txtParticipants').attr('hidden', true);
+
     var adminName = $('#txtAdmin').val().trim();
     var tournamentName = $('#txtName').val().trim();
     var date = $('#txtDate').val().trim();
     var type = $('#tournamentType').val();
     var seed = $('#randSeed').prop('checked');
     var players = $('#participantList p');
+
+    $('#txtTitle').text(tournamentName + " is in progress.");
 
     if (adminName != '' && tournamentName != '' && date != '' && players.length != 0) {
         $.ajax({
