@@ -4,6 +4,11 @@
    
 });
 
+var saveFile = function () {
+    document.getElementById("file").click();
+    document.getElementById("file1").click();
+}
+
 var randSeed = function () {
     if ($('#randSeed').prop('checked')) {
         $('#txtPartSeed').val(" ");
@@ -51,6 +56,10 @@ var createTournament = function () {
                 $("#participantsDiv").slideUp();
                 $("#bracketWinners").slideDown();
                 $("#undoDiv").slideDown();
+                if (type == "Double Elimination") {
+                    $("#bracketLosers").slideDown();
+                }
+                $("#saveDiv").slideDown();
                 if (type == "Double Elimination") {
                     $("#bracketLosers").slideDown();
                 }
@@ -112,9 +121,13 @@ var createTournament8 = function () {
 
                 $("#participantsDiv").slideUp();
                 $("#bracketWinners8").slideDown();
-                $("#undoDiv").slideDown();
+                $("#undoDiv8").slideDown();
                 if (type == "Double Elimination") {
                     $("#bracketLosers8").slideDown();
+                }
+                $("#saveDiv8").slideDown();
+                if (type == "Double Elimination") {
+                    $("#bracketLosers").slideDown();
                 }
             },
             error: function (xhr, ajaxOptions, thrownError) {
