@@ -21,7 +21,9 @@ var randSeed = function () {
 var loadTournament = function () {
 
 }
-
+var save = function () {
+    alert("Save successful")
+}
 
 var createTournament = function () {
     var adminName = $('#txtAdmin').val().trim();
