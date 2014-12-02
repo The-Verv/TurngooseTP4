@@ -126,9 +126,7 @@ var createTournament8 = function () {
                     $("#bracketLosers8").slideDown();
                 }
                 $("#saveDiv8").slideDown();
-                if (type == "Double Elimination") {
-                    $("#bracketLosers").slideDown();
-                }
+                
             },
             error: function (xhr, ajaxOptions, thrownError) {
                 alert("Un ou des champs obligatoires sont manquants.")
