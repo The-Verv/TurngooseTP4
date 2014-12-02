@@ -40,7 +40,7 @@ textarea {
 }
 
 .bracket li.player, select.player {
-    width:200px;
+    width:150px;
     background-color:lightblue;
     border-width:1px;
     border-style:solid;

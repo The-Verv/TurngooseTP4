@@ -1,4 +1,11 @@
-﻿<div id="newTournament">
+﻿ <script>
+     $(function () {
+         $(document).tooltip();
+     });
+</script>
+
+
+<div id="newTournament">
     <h2 id="txtTitle">New Tournament Setup</h2>
 
 
@@ -60,33 +67,29 @@
     <ul>
         <li>
             <div class="bracket" id="undoDiv" style="float:left;">
-                <input id="btnUndo" type="button" value="Undo" style="width:150px;" /><br />
+                <input id="btnUndo" type="button" value="Save current progress" style="width:150px;" /><br />
             </div>
         </li>
         <li></li>
         <li></li>
-        <li class="player" id="p1">
+        <li class="player" id="p1" title="From team ABC / Sponsored by XYZ">
             MrBomb
         </li>
-        <li class="player" id="p2">
+        <li class="player" id="p2" title="From team ABC / Sponsored by XYZ">
             JackStorm
         </li>
         <li></li>
         <li></li>
-        <li class="player" id="p3">
+        <li class="player" id="p3" title="From team ABC / Sponsored by XYZ">
             Mawreece
         </li>
-        <li class="player" id="p4">
+        <li class="player" id="p4" title="From team ABC / Sponsored by XYZ">
             RenegadePylon
         </li>
         <li></li>
     </ul>
     <ul>
         <li>
-            <div class="bracket" id="saveDiv" style="float: left; display: block;">
-                <input type="file" id="file1" style="display:none">
-                <input id="btnSave" type="button" onclick="saveFile();" value="Save current progress" style="width:150px;" /><br />
-            </div>
         </li>
         <li></li>
         <li></li>
@@ -130,6 +133,31 @@
         <li></li>
         <li></li>
     </ul>
+    <ul> <!-- Winner Final -->
+        <li></li>
+        <li></li>
+        <li></li>
+        <li class="D"></li>
+        <li class="U"></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li class="player">
+            <select class="player" onchange="addFinalAndLoser(this, 'final1', 'l4_3')">
+                <option value=""></option>
+                <option value="MrBomb">MrBomb</option>
+                <option value="Mawreece">Mawreece</option>
+            </select> 
+        </li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
     
 </div>
 <div class="bracket" id="bracketWinners8" style="width:100%; float:left;">
@@ -137,39 +165,39 @@
     <ul>
         <li>
             <div class="bracket" id="undoDiv8" style="float:left;">
-                <input id="btnUndo" type="button" value="Undo"  style="width:150px;" /><br />
+                <input id="btnUndo" type="button" value="Save current progress"  style="width:150px;" /><br />
             </div>
         </li>
         <li></li>
         <li></li>
-        <li class="player" id="p1">
+        <li class="player" id="p1" title="From team ABC / Sponsored by XYZ">
             MrBomb
         </li>
-        <li class="player" id="p2">
+        <li class="player" id="p2" title="From team ABC / Sponsored by XYZ">
             JackStorm
         </li>
         <li></li>
         <li></li>
-        <li class="player" id="p3">
+        <li class="player" id="p3" title="From team ABC / Sponsored by XYZ">
             Mawreece
         </li>
-        <li class="player" id="p4">
+        <li class="player" id="p4" title="From team ABC / Sponsored by XYZ">
             RenegadePylon
         </li>
         <li></li>
         <li></li>
-        <li class="player" id="p5">
+        <li class="player" id="p5" title="From team ABC / Sponsored by XYZ">
             Muslimshady
         </li>
-        <li class="player" id="p6">
+        <li class="player" id="p6" title="From team ABC / Sponsored by XYZ">
             King$Kong
         </li>
         <li></li>
         <li></li>
-        <li class="player" id="p7">
+        <li class="player" id="p7" title="From team ABC / Sponsored by XYZ">
             #420blazeit
         </li>
-        <li class="player" id="p8">
+        <li class="player" id="p8" title="From team ABC / Sponsored by XYZ">
             %_HDNW_%
         </li>
         <li></li>
@@ -325,6 +353,39 @@
         <li></li>
         <li></li>
     </ul>
+    <ul> <!-- Winner Final -->
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li class="D"></li>
+        <li class="U"></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li class="player">
+            <select class="player" onchange="addFinalAndLoser(this, 'final1', 'l8_7')">
+                <option value=""></option>
+                <option value="MrBomb">MrBomb</option>
+                <option value="Muslimshady">Muslimshady</option>
+            </select> 
+        </li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
 </div>
 <div class="bracket" id="bracketLosers" style="width:100%; float:left;">
     <h2>Losers Bracket - 4 players example</h2>
@@ -369,12 +430,7 @@
         <li></li>
         <li></li>
         <li class="player" id="l4_3">
-            <select class="player">
-                <option value=""></option>
-                <option value="MrBomb">MrBomb</option>
-                <option value="Mawreece">Mawreece</option>
-            </select> 
-</li>
+        </li>
         <li class="player">
             <select class="player">
                 <option value=""></option>
@@ -386,7 +442,31 @@
         <li></li>
         <li></li>
     </ul>
-    
+    <ul> <!-- Winner Final -->
+        <li></li>
+        <li></li>
+        <li></li>
+        <li class="D"></li>
+        <li class="U"></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li class="player">
+            <select class="player" onchange="addFinal(this, 'final2')">
+                <option value=""></option>
+                <option value="Mawreece">Mawreece</option>
+                <option value="JackStorm">JackStorm</option>
+            </select> 
+        </li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
 </div>
 <div class="bracket" id="bracketLosers8" style="width:100%; float:left;">
     <h2>Losers Bracket - 8 players</h2>
@@ -584,11 +664,6 @@
         <li></li>
         <li></li>
         <li class="player" id="l8_7">
-            <select class="player">
-                <option value=""></option>
-                <option value="MrBomb">MrBomb</option>
-                <option value="Muslimshady">Muslimshady</option>
-            </select> 
         </li>
         <li class="player">
             <select class="player">
@@ -605,6 +680,74 @@
         <li></li>
         <li></li>
     </ul>
+<ul> <!-- Winner Final -->
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li class="D"></li>
+        <li class="U"></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li class="player">
+            <select class="player" onchange="addFinal(this, 'final2')">
+                <option value=""></option>
+                <option value="Muslimshady">Muslimshady</option>
+                <option value="Mawreece ">Mawreece</option>
+            </select> 
+        </li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</div>
+<div class="bracket" id="bracketFinals" style="width:100%; float:left;">
+    <h2>Grand Finals</h2>
+    <ul>
+        <li>
+        </li>
+        <li></li>
+        <li></li>
+        <li class="player" id="final1">
+        </li>
+        <li class="player" id="final2">
+        </li>
+    </ul>
+<ul> <!-- Grand Final -->
+        <li></li>
+        <li></li>
+        <li></li>
+        <li class="D"></li>
+        <li class="U"></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li class="player">
+            <select class="player">
+                <option value=""></option>
+                <option value="MrBomb">MrBomb</option>
+                <option value="Mawreece">Mawreece</option>
+            </select> 
+        </li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    
 </div>
 <div class="playerInformation">
     <h3 id="txtParticipants">Player Information</h3>

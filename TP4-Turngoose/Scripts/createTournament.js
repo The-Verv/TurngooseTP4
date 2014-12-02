@@ -146,17 +146,26 @@ var addLoser = function (ddl, bracketID) {
 
         ddl.options[0].value = document.getElementById(bracketID).innerHTML;
         document.getElementById(bracketID).innerHTML = loser;
-        var list = document.getElementById(bracketID),
-        items = list.childNodes;
-
-        for (var i = 0, length = childNodes.length; i < length; i++) {
-            if (items[i].nodeType != 1) {
-                continue;
-            }
-            items[i].innerHTML = loser;
-        }
     }
     
+}
+
+var addFinal = function (ddl, bracketID) {
+    if (ddl.selectedIndex != 0) {
+        if (bracketID == 'final2') {
+            $("#bracketFinals").slideDown();
+        }
+        ddl.options[0].value = document.getElementById(bracketID).innerHTML;
+        document.getElementById(bracketID).innerHTML = ddl.options[ddl.selectedIndex].value;
+        var list = document.getElementById(bracketID),
+        items = list.childNodes;
+    }
+
+}
+
+var addFinalAndLoser = function (ddl, bracketID1, bracketID2) {
+    addFinal(ddl, bracketID1);
+    addLoser(ddl, bracketID2);
 }
 
 var addParticipant = function () {
